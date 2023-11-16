@@ -4,3 +4,6 @@ node_modules
 
 #ignore env files
 .env
+
+/uploads
+controllers/uploads
