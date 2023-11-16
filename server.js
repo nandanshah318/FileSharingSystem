@@ -10,23 +10,20 @@ connectDB();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Routes
-app.use('/api/file', router);
+app.use('/api', router);
 
-// REST API
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to FileSharing app</h1>');
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  console.log('Incoming request:', req.method, req.url);
   res.status(500).send('Something went wrong!');
 });
 
